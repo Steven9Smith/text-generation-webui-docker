@@ -21,7 +21,7 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
 && bash /tmp/miniconda.sh -bfp /root/miniconda3 \
 && rm -rf /tmp/miniconda.sh \
-&& conda install -y python=3.10.5 \
+&& conda install -y python=3.10 \
 && conda clean --all --yes
 
 # Install PyTorch
