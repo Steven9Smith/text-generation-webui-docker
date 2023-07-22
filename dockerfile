@@ -34,4 +34,7 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git
 WORKDIR /app/text-generation-webui
 RUN pip install -r requirements.txt
 
+RUN ls
+RUN ls ../
+
 CMD ["python", "/app/text-generation-webui/server.py"]
