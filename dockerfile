@@ -1,7 +1,8 @@
 FROM nvidia/cuda:12.2.0-devel-ubuntu20.04
 
 # Install some basic utilities and Python
-RUN apt-get update && apt-get install -y \
+RUN set -ex \
+    && apt-get update && apt-get install -y \
     curl \
     ca-certificates \
     sudo \
@@ -28,11 +29,13 @@ RUN curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_6
 RUN conda install pytorch torchvision torchaudio cudatoolkit=11.8 -c pytorch
 
 # Clone the GitHub repository
-RUN git clone https://github.com/oobabooga/text-generation-webui.git
+RUN echo "Starting to clone the repository..." \
+    && git clone https://github.com/oobabooga/text-generation-webui.git \
+    && echo "Finished cloning the repository."
 
 # Install the dependencies from requirements.txt
 WORKDIR /app/text-generation-webui
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt -v
 
 #expose port for use outside of container
 EXPOSE 7861
