@@ -34,7 +34,8 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git
 WORKDIR /app/text-generation-webui
 RUN pip install -r requirements.txt
 
-RUN ls
-RUN ls ../
+#expose port for use outside of container
+EXPOSE 7861
 
-CMD ["python", "/app/text-generation-webui/server.py"]
+# start
+CMD ["python", "server.py"]
