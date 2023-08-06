@@ -41,4 +41,4 @@ RUN pip install -r requirements.txt -v
 EXPOSE 7861
 
 # start
-CMD ["python", "server.py"]
+CMD ["python", "server.py --api"]
